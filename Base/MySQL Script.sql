@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     21/11/2016 16:07:45                          */
+/* Created on:     21/11/2016 18:56:41                          */
 /*==============================================================*/
 
 
@@ -26,9 +26,10 @@ create table CENAS
    ID_CENAS             int not null auto_increment,
    FECHA_CENAS          date not null,
    LUGAR_CENAS          varchar(200) not null,
-   LONGITUD_CENAS       float(5) not null,
-   LATITUD_CENAS        float(5) not null,
+   LONGITUD_CENAS       decimal(2,16) not null,
+   LATITUD_CENAS        decimal(2,16) not null,
    HORA_CENAS           time not null,
+   ENCARGADOS_CENAS     varchar(200) not null,
    INVITACION_CENAS     text,
    primary key (ID_CENAS)
 );
@@ -92,6 +93,7 @@ create table MENUS
 (
    ID_MENUS             int not null auto_increment,
    DETALLE_MENUS        varchar(200) not null,
+   MOSTRAR_MENUS        bool not null,
    ID_CENAS             int not null,
    primary key (ID_MENUS)
 );

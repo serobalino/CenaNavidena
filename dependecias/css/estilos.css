@@ -1,0 +1,66 @@
+@font-face {
+   font-family: "Nieve";
+   src: url("../fonts/nieve.ttf");
+}
+@font-face {
+   font-family: "Manuscrita";
+   src: url("../fonts/manus.ttf");
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body{
+	background: #EAEAEA;
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#DFFFD7', EndColorStr='#CBA8A8');
+	background: -moz-linear-gradient(top, #DFFFD7, #CBA8A8);
+	background: linear-gradient(#DFFFD7, #CBA8A8);
+	background: -webkit-gradient(linear, left top, left bottom, from(#DFFFD7 to(#CBA8A8)));
+	background: -o-linear-gradient(#DFFFD7, #CBA8A8);
+	background: linear-gradient(top, #DFFFD7, #CBA8A8);
+	background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+footer {
+  background-image: url("../../imagenes/footer.png");
+	background-size: contain;
+	background-position:left top, right bottom, 0 0;
+  margin-top: 0px;
+	border: none;
+  padding-top: 20px;
+  padding-bottom: 10px;
+	width: 100%;
+  position: relative;
+  margin-top: -52px;
+  height: 52px;
+  clear:both;
+}
+header {
+    background-image: url("../../imagenes/header.png");
+    background-size: contain;
+    background-position: left top, right top, 0 0;
+    padding-top:0px;
+    padding-bottom:0px;
+    border: none;
+  	height:52px;
+    width: 100%;
+}
+.main{
+  min-height:calc(100% - 52px);
+	padding-top: 0px;
+  overflow:auto;
+  padding-bottom:0px;
+}
+.nieve{
+  font-family: "Nieve";
+}
+.manuscrita{
+  font-family: "Manuscrita";
+}
+.navidad{
+  font-family: "Manuscrita";
+  color: #14450a;
+}
