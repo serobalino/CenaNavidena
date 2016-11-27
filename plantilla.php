@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bienvenid@ </title>
     <!-- CCSs --->
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -16,6 +17,7 @@
     <script charset="utf-8" src="dependecias/js/index.js" ></script>
   </head>
   <body>
+    <canvas id="canvas"></canvas>
     <header></header>
     <article class="main">
       <div class="container">
@@ -24,20 +26,22 @@
           <div class="col-md-6">
             <img src="imagenes/arbol.gif" alt="Arbol Navidad Robalino" class="img-responsive center-block">
           </div>
-          <br><br><br>
-          <div class="col-md-5 text-justify">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            <p id="tiempo"></p>
-
+          <br><br>
+          <div class="col-md-6 text-justify">
+            <p id="tiempo" class="text-danger"></p>
+            <div id="alerta"></div>
+            <form class="entrada" method="post">
+              <p class="text-success">Ingresa tu correo electrónico.</p>
+              <input type="email" name="" class="form-control input-lg row" value="" required="">
+              <br>
+              <button type="button" name="button" class="btn btn-default"> Ingresar</button>
+            </form>
+            <br><br><br><br><br><br>
           </div>
-          <iframe src="https://embed.spotify.com/?uri=spotify%3Atrack%3A33Q6ldVXuJyQmqs8BmAa0k&theme=white" frameborder="0" allowtransparency="true"></iframe>
         </div>
-
-
       </div>
-
     </article>
     <footer></footer>
+    <script charset="utf-8" src="dependecias/js/nieve-js.js" ></script>
   </body>
 </html>

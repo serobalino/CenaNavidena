@@ -1,26 +1,24 @@
-countdown();
-function countdown(){
-    var fecha=new Date('2016','10','21','20','00','00');
-    var hoy=new Date();
-    var dias    =0;
-    var horas   =0;
-    var minutos =0;
-    var segundos=0;
-
-    if (fecha>hoy){
-            var diferencia=(fecha.getTime()-hoy.getTime())/1000;
-            dias      =Math.floor(diferencia/86400);
-            diferencia=diferencia-(86400*dias);
-            horas     =Math.floor(diferencia/3600);
-            diferencia=diferencia-(3600*horas);
-            minutos   =Math.floor(diferencia/60);
-            diferencia=diferencia-(60*minutos);
-            segundos  =Math.floor(diferencia);
-
-            $('#tiempo').html('Quedan ' + dias + ' D&iacute;as, ' + horas + ' Horas, ' + minutos + ' Minutos, ' + segundos + ' Segundos');
-
-            if (dias>0 || horas>0 || minutos>0 || segundos>0){
-                    setTimeout("countdown()",1000);
-            }
+$(document).ready(function(){
+  var frm = $('#login');
+  frm.validator().on('submit', function (e) {
+    if (e.isDefaultPrevented()) {
+      console.log('Completa los campos necesarios');
+    }else{
+      $('#alerta').html('<div class="alert alert-info"><strong><i class="fa fa-refresh fa-spin"></i> Procesando datos</strong></div>');
+      $.ajax({
+              type: "POST",
+              url: "funciones/login",
+              data: frm.serialize(),
+              success: function (data) {
+                if(data.concecion){
+                  $('#alerta').html('<div class="alert alert-success"><strong><i class="fa fa-check"></i> Ingresando al sistema</strong></div>');
+                  window.location="confirmacion";
+                }else
+                  $('#alerta').html('<div class="alert alert-warning"><strong><i class="fa fa-exclamation"></i> No esta invitado, consulte con</strong> <a href="mailto:odm_sd@hotmail.com" class="alert-link">odm_sd@hotmail.com</a> </div>');
+              }
+          });
+      e.preventDefault();
+      return false;
     }
-}
+  });
+});

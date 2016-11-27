@@ -14,12 +14,12 @@ body {
 }
 body{
 	background: #EAEAEA;
-	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#DFFFD7', EndColorStr='#CBA8A8');
-	background: -moz-linear-gradient(top, #DFFFD7, #CBA8A8);
-	background: linear-gradient(#DFFFD7, #CBA8A8);
-	background: -webkit-gradient(linear, left top, left bottom, from(#DFFFD7 to(#CBA8A8)));
-	background: -o-linear-gradient(#DFFFD7, #CBA8A8);
-	background: linear-gradient(top, #DFFFD7, #CBA8A8);
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#bd0808', EndColorStr='#8d4343');
+	background: -moz-linear-gradient(top, #bd0808, #8d4343);
+	background: linear-gradient(#bd0808, #8d4343);
+	background: -webkit-gradient(linear, left top, left bottom, from(#bd0808 to(#8d4343)));
+	background: -o-linear-gradient(#bd0808, #8d4343);
+	background: linear-gradient(top, #bd0808, #8d4343);
 	background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -52,7 +52,7 @@ header {
   min-height:calc(100% - 52px);
 	padding-top: 0px;
   overflow:auto;
-  padding-bottom:0px;
+  padding-bottom:100px;
 }
 .nieve{
   font-family: "Nieve";
@@ -63,4 +63,15 @@ header {
 .navidad{
   font-family: "Manuscrita";
   color: #14450a;
+}
+canvas{
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:1;
+}
+.entrada{
+  z-index:1;
+  position:absolute;
+  width: 100%;
 }

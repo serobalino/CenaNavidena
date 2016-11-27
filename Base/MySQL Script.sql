@@ -1,10 +1,12 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     21/11/2016 18:56:41                          */
+/* Created on:     27/11/2016 15:13:31                          */
 /*==============================================================*/
 
 
 drop table if exists CENAS;
+
+drop table if exists CONFIRMA;
 
 drop table if exists ENVIADO;
 
@@ -26,12 +28,23 @@ create table CENAS
    ID_CENAS             int not null auto_increment,
    FECHA_CENAS          date not null,
    LUGAR_CENAS          varchar(200) not null,
-   LONGITUD_CENAS       decimal(2,16) not null,
-   LATITUD_CENAS        decimal(2,16) not null,
+   LONGITUD_CENAS       float not null,
+   LATITUD_CENAS        float not null,
    HORA_CENAS           time not null,
    ENCARGADOS_CENAS     varchar(200) not null,
    INVITACION_CENAS     text,
    primary key (ID_CENAS)
+);
+
+/*==============================================================*/
+/* Table: CONFIRMA                                              */
+/*==============================================================*/
+create table CONFIRMA
+(
+   ID_INVI              int not null,
+   ID_CENAS             int not null,
+   FECHA_CONFIRMA       timestamp,
+   primary key (ID_INVI, ID_CENAS)
 );
 
 /*==============================================================*/
@@ -52,7 +65,6 @@ create table ENVIADO
 create table FAMILIAS
 (
    ID_FAMILIA           int not null auto_increment,
-   ID_CENAS             int not null,
    DENO_FAMILIA         varchar(250) not null,
    primary key (ID_FAMILIA)
 );
@@ -110,13 +122,16 @@ create table TRAE
    primary key (ID_INGRE, ID_INVI)
 );
 
+alter table CONFIRMA add constraint FK_CONFIRMA foreign key (ID_CENAS)
+      references CENAS (ID_CENAS) on delete restrict on update restrict;
+
+alter table CONFIRMA add constraint FK_CONFIRMA2 foreign key (ID_INVI)
+      references INVITADOS (ID_INVI) on delete restrict on update restrict;
+
 alter table ENVIADO add constraint FK_ENVIADO foreign key (ID_INVI)
       references INVITADOS (ID_INVI) on delete restrict on update restrict;
 
 alter table ENVIADO add constraint FK_ENVIADO2 foreign key (ID_CENAS)
-      references CENAS (ID_CENAS) on delete restrict on update restrict;
-
-alter table FAMILIAS add constraint FK_VIENEN foreign key (ID_CENAS)
       references CENAS (ID_CENAS) on delete restrict on update restrict;
 
 alter table INGREDIENTES add constraint FK_SE_HACE foreign key (ID_MENUS)
