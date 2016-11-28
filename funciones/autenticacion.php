@@ -3,7 +3,7 @@ function acceso(){
   @session_start();
   $MM_restrictGoTo = "./";
   if(isset($_SESSION["USR_ID"]) && isset($_SESSION["USR_NOM"]) && isset($_SESSION["USR_FILIA"]) && isset($_SESSION["USR_FNOM"])){
-    $j=1;
+    $i=1;
   }else{
     if(isset($_GET['hash'])){
       if(require_once("conexion/base.php")){

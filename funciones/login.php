@@ -20,11 +20,15 @@
       echo json_encode($lista);
     }
     if(isset($_GET['fecha'])){
-      $stmt =$base_var->prepare("SELECT DATE_FORMAT(FECHA_CENAS,'%Y') ANO,DATE_FORMAT(FECHA_CENAS,'%m')-1 MES,DATE_FORMAT(FECHA_CENAS,'%d') DIA,DATE_FORMAT(HORA_CENAS,'%H') HORA,DATE_FORMAT(HORA_CENAS,'%i') MINUTOS FROM cenas WHERE FECHA_CENAS>now() LIMIT 1");
+      @session_start();
+      $stmt =$base_var->prepare("SELECT DATE_FORMAT(FECHA_CENAS,'%Y') ANO,DATE_FORMAT(FECHA_CENAS,'%m')-1 MES,DATE_FORMAT(FECHA_CENAS,'%d') DIA,DATE_FORMAT(HORA_CENAS,'%H') HORA,DATE_FORMAT(HORA_CENAS,'%i') MINUTOS,ID_CENAS,LUGAR_CENAS,ENCARGADOS_CENAS FROM cenas WHERE FECHA_CENAS>now() LIMIT 1");
       $stmt->execute();
       $result = $stmt->get_result();
       $stmt_row = $result->fetch_assoc();
       if($stmt_row){
+        $_SESSION["CENA_ID"]    = $stmt_row['ID_CENAS'];
+        $_SESSION["CENA_LUGAR"] = $stmt_row['LUGAR_CENAS'];
+        $_SESSION["CENA_ENCA"]  = $stmt_row['ENCARGADOS_CENAS'];
       ?>
       countdown();
       function countdown(){

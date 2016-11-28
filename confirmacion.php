@@ -27,14 +27,12 @@ acceso();
           <div class="col-md-11 text-justify">
             <p id="tiempo" class="text-danger"></p>
             <div id="alerta"></div>
-            <p class="text-success">Hola, <?php echo $_SESSION["USR_NOM"]?></p>
+            <p class="text-success">Hola, <?php echo $_SESSION["USR_NOM"]?>, formas parte de la familia <?php echo $_SESSION["USR_FNOM"]?></p>
             <form class="entrada" method="post">
-              <p class="text-success">Ingresa tu correo electrónico.</p>
-              <input type="email" name="" class="form-control input-lg" value="" required="">
-              <br>
-              <button type="button" name="button" class="btn btn-default"> Ingresar</button>
+              <p class="text-success" id="filia"></p>
+
             </form>
-            <br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br>
           </div>
         </div>
       </div>
