@@ -39,6 +39,7 @@ if(isset($_POST['familias']) && $_POST['familias']==1){
     }else{
       $html="<b>Gracias, ya confirmaste o alguien de tu familia confirmo tu asistencia <i class='fa fa-smile-o'></i></b>";
     }
+    
     echo $html;
   }
 }
