@@ -8,12 +8,11 @@ function acceso(){
     if(isset($_GET['hash'])){
       if(require_once("conexion/base.php")){
         $input           =  $_GET['hash'];
-        $stmt =$base_var->prepare("SELECT * FROM invitados NATURAL JOIN familias WHERE HASH_INVI = ? LIMIT 1");
-        $stmt->bind_param("s", $input);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $stmt_query="SELECT * FROM invitados NATURAL JOIN familias WHERE HASH_INVI = '$input' LIMIT 1";
+        $stmt = $base_var->query($stmt_query) or die(mysqli_error());
+        $stmt_row = mysqli_fetch_assoc($stmt);
         $i=0;
-        while ($stmt_row = $result->fetch_assoc()) {
+        if ($stmt_row) {
           $_SESSION["USR_ID"]     = $stmt_row['ID_INVI'];
           $_SESSION["USR_NOM"]    = $stmt_row['NOMBRES_INVI'];
           $_SESSION["USR_FILIA"]  = $stmt_row['ID_FAMILIA'];

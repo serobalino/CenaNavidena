@@ -20,7 +20,7 @@ function c_email($nombre,$correo){
 }
 function leerEmail($replace,$email){
 		ob_start();
-		$idcena=$_SESSION["CENA"];
+		$idcena=$_SESSION["CENA_ID"];
   	require_once '../emails/'.$idcena.'.html';
 		$hash	= SHA1($email);
 		$content = ob_get_clean();
@@ -43,7 +43,7 @@ function envia_todos(){
 		$query_cena = "SELECT ID_CENAS FROM cenas WHERE FECHA_CENAS>now() LIMIT 1";
 		$cena = $base_var->query($query_cena) or die(mysqli_error());
     $cena_row = mysqli_fetch_assoc($cena);
-		$_SESSION["CENA"]=$cena_row['ID_CENAS'];
+		$_SESSION["CENA_ID"]=$cena_row['ID_CENAS'];
 
 		$query_mailing = "SELECT NOMBRES_INVI,EMAIL_INVI FROM invitados";
   	$mailing = $base_var->query($query_mailing) or die(mysqli_error());

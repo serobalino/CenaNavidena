@@ -36,7 +36,7 @@ acceso();
               <p class="text-success">Hola, <?php echo $_SESSION["USR_NOM"]?>, formas parte de la familia <?php echo $_SESSION["USR_FNOM"]?></p>
               <div id="filia"></div>
             </form>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </div>
         </div>
       </div>

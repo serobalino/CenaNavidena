@@ -31,6 +31,7 @@ function cargar(){
                       console.log(data);
                       if(data==="1"){
                         $('#alerta').html('<div class="alert alert-success"><b><span class="fa fa-paper-plane-o"></span> Se ha enviado una invitación a '+nom+'</b></div>');
+                        cargar();
                       }else{
                           $('#alerta').html('<div class="alert alert-danger"><b><span class="fa fa-envelope-o"></span> '+nom+' ya está invitad@</b></div>');
                           $('#nom').val('');

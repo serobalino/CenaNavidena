@@ -2,14 +2,13 @@
   if(require_once("../conexion/base.php")){
     if(isset($_POST['mail'])){
       $input           =  $_POST['mail'];
-      $stmt =$base_var->prepare("SELECT * FROM invitados NATURAL JOIN familias WHERE EMAIL_INVI = ? LIMIT 1");
-      $stmt->bind_param("s", $input);
-      $stmt->execute();
-      $result = $stmt->get_result();
+      $stmt_query="SELECT * FROM invitados NATURAL JOIN familias WHERE EMAIL_INVI ='$input' LIMIT 1";
+      $stmt = $base_var->query($stmt_query) or die(mysqli_error());
+      $stmt_row = mysqli_fetch_assoc($stmt);
       @session_start();
       sleep(3);
       $lista = array('concecion'       => false);
-      while ($stmt_row = $result->fetch_assoc()) {
+      if($stmt_row) {
         $_SESSION["USR_ID"]     = $stmt_row['ID_INVI'];
         $_SESSION["USR_NOM"]    = $stmt_row['NOMBRES_INVI'];
         $_SESSION["USR_FILIA"]  = $stmt_row['ID_FAMILIA'];
@@ -21,10 +20,9 @@
     }
     if(isset($_GET['fecha'])){
       @session_start();
-      $stmt =$base_var->prepare("SELECT DATE_FORMAT(FECHA_CENAS,'%Y') ANO,DATE_FORMAT(FECHA_CENAS,'%m')-1 MES,DATE_FORMAT(FECHA_CENAS,'%d') DIA,DATE_FORMAT(HORA_CENAS,'%H') HORA,DATE_FORMAT(HORA_CENAS,'%i') MINUTOS,ID_CENAS,LUGAR_CENAS,ENCARGADOS_CENAS FROM cenas WHERE FECHA_CENAS>now() LIMIT 1");
-      $stmt->execute();
-      $result = $stmt->get_result();
-      $stmt_row = $result->fetch_assoc();
+      $stmt_query ="SELECT DATE_FORMAT(FECHA_CENAS,'%Y') ANO,DATE_FORMAT(FECHA_CENAS,'%m')-1 MES,DATE_FORMAT(FECHA_CENAS,'%d') DIA,DATE_FORMAT(HORA_CENAS,'%H') HORA,DATE_FORMAT(HORA_CENAS,'%i') MINUTOS,ID_CENAS,LUGAR_CENAS,ENCARGADOS_CENAS FROM cenas WHERE FECHA_CENAS>now() LIMIT 1";
+      $stmt = $base_var->query($stmt_query) or die(mysqli_error());
+      $stmt_row = mysqli_fetch_assoc($stmt);
       if($stmt_row){
         $_SESSION["CENA_ID"]    = $stmt_row['ID_CENAS'];
         $_SESSION["CENA_LUGAR"] = $stmt_row['LUGAR_CENAS'];

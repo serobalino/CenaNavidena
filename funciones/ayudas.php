@@ -22,7 +22,7 @@ if(isset($_POST['listar'])){
         <th>Detalle</th>
         <th>Materiales</th>
         <th></th>
-        <th>Tienes?</th>
+        <th>Puedes ayudar?</th>
         <th>Cantidad</th>
       </tr>
     </thead><tbody>';

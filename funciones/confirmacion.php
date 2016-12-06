@@ -84,17 +84,14 @@ if(isset($_POST['nuevo'])){
     require_once('emails.php');
     $id_filia=$_SESSION["USR_FILIA"];
     $email=strtolower($_POST['email']);
-    $stmt =$base_var->prepare("SELECT * FROM invitados WHERE EMAIL_INVI =? OR NOMBRES_INVI=?");
-    $stmt->bind_param("ss", $_POST['email'],$_POST['nom']);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $stmt_row = $result->fetch_assoc();
+    $nombr=$_POST['nom'];
+    $stmt_query ="SELECT * FROM invitados WHERE EMAIL_INVI ='$email' OR NOMBRES_INVI='$nombr'";
+    $stmt = $base_var->query($stmt_query) or die(mysqli_error());
+    $stmt_row = mysqli_fetch_assoc($stmt);
     if(!$stmt_row){
-      $stmt =$base_var->prepare("INSERT INTO invitados(ID_FAMILIA,NOMBRES_INVI,EMAIL_INVI,HASH_INVI) VALUES (?,?,?,SHA1(?))");
-      $stmt->bind_param("isss",$id_filia,$_POST['nom'],$email,$email);
-      $stmt->execute();
-      $result = $stmt->get_result();
-      c_email($_POST['nom'],$email);
+      $stmt_query ="INSERT INTO invitados(ID_FAMILIA,NOMBRES_INVI,EMAIL_INVI,HASH_INVI) VALUES ($id_filia,'$nombr','$email',SHA1('$email'))";
+      $base_var->query($stmt_query) or die(mysqli_error());
+      c_email($nombr,$email);
       echo 1;
     }else{
       echo 0;

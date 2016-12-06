@@ -98,10 +98,12 @@ if(isset($_POST['insertar'])){
     $fid = $_SESSION["USR_FILIA"];
     $ufn = $_SESSION["USR_FNOM"];
 
+    $det=$_POST['detalle'];
+    $tit=$_POST['titulo'];
 
-    $stmt =$base_var->prepare("INSERT INTO eventos (ID_CENAS,ID_FAMILIA,DETALLE_EVENTO,TIPO_EVENTO)VALUES(?,?,?,?)");
-    $stmt->bind_param("iiss",$cid,$fid,$_POST['detalle'],$_POST['titulo']);
-    $stmt->execute();
+
+    $stmt =$base_var->prepare("INSERT INTO eventos (ID_CENAS,ID_FAMILIA,DETALLE_EVENTO,TIPO_EVENTO)VALUES($cid,$fid,'$det','$tit')");
+    $base_var->query($stmt_query) or die(mysqli_error());
     echo '<div class="alert alert-info"><b><span class="fa fa-check"></span> Se guardo Correctamente.</b></div>';
   }
 }
