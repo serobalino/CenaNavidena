@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     27/11/2016 15:13:31                          */
+/* Created on:     5/12/2016 23:40:26                           */
 /*==============================================================*/
 
 
@@ -9,6 +9,8 @@ drop table if exists CENAS;
 drop table if exists CONFIRMA;
 
 drop table if exists ENVIADO;
+
+drop table if exists EVENTOS;
 
 drop table if exists FAMILIAS;
 
@@ -57,6 +59,19 @@ create table ENVIADO
    EN_ENVIADO           smallint not null default 1,
    FECHA_ENVIADO        timestamp not null,
    primary key (ID_CENAS, ID_INVI)
+);
+
+/*==============================================================*/
+/* Table: EVENTOS                                               */
+/*==============================================================*/
+create table EVENTOS
+(
+   ID_CENAS             int not null,
+   ID_FAMILIA           int not null,
+   DETALLE_EVENTO       text not null,
+   TIPO_EVENTO          varchar(150) not null,
+   FECHA_EVENTO         timestamp not null,
+   primary key (ID_CENAS, ID_FAMILIA)
 );
 
 /*==============================================================*/
@@ -132,6 +147,12 @@ alter table ENVIADO add constraint FK_ENVIADO foreign key (ID_INVI)
       references INVITADOS (ID_INVI) on delete restrict on update restrict;
 
 alter table ENVIADO add constraint FK_ENVIADO2 foreign key (ID_CENAS)
+      references CENAS (ID_CENAS) on delete restrict on update restrict;
+
+alter table EVENTOS add constraint FK_EVENTOS foreign key (ID_FAMILIA)
+      references FAMILIAS (ID_FAMILIA) on delete restrict on update restrict;
+
+alter table EVENTOS add constraint FK_EVENTOS2 foreign key (ID_CENAS)
       references CENAS (ID_CENAS) on delete restrict on update restrict;
 
 alter table INGREDIENTES add constraint FK_SE_HACE foreign key (ID_MENUS)

@@ -1,3 +1,7 @@
+<?php
+require_once("funciones/autenticacion.php");
+acceso();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,21 +22,21 @@
     <article class="main">
       <div class="container">
         <div class="well well-lg row text-center">
-          <h1 class="navidad animated fadeInUp">Feliz Navidad 2016</h1>
-          <div class="col-md-6">
-            <img src="imagenes/arbol.gif" alt="Arbol Navidad Robalino" class="img-responsive center-block">
-          </div>
+          <h1 class="navidad animated fadeInUp">Navidad <?php echo date("Y")?></h1>
           <br><br>
-          <div class="col-md-6 text-justify">
+          <div class="col-md-11 col-xs-11 text-justify">
             <p id="tiempo" class="text-danger"></p>
             <div id="alerta"></div>
             <form class="entrada" method="post">
-              <p class="text-success">Ingresa tu correo electrónico.</p>
-              <input type="email" name="" class="form-control input-lg row" value="" required="">
-              <br>
-              <button type="button" name="button" class="btn btn-default"> Ingresar</button>
+              <div class="btn-group">
+               <a href="confirmacion" class="btn btn-default">Confirmar Asistencia</a>
+               <a href="numeros" class="btn btn-default">Registrar tu participación Artística</a>
+               <a href="#" class="btn btn-default active">Revisa la lista de materiales</a>
+              </div>
+              <p class="text-success">Hola, <?php echo $_SESSION["USR_NOM"]?>, formas parte de la familia <?php echo $_SESSION["USR_FNOM"]?></p>
+              <div id="filia"></div>
             </form>
-            <br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </div>
         </div>
       </div>
@@ -41,8 +45,8 @@
     <!-- JSs --->
     <script charset="utf-8" src="dependecias/js/jquery.min.js" ></script>
     <script charset="utf-8" src="dependecias/js/bootstrap.min.js" ></script>
-    <script charset="utf-8" src="dependecias/js/bootstrapValidator.min.js" ></script>
-    <script charset="utf-8" src="dependecias/js/index.js" ></script>
+    <script charset="utf-8" src="dependecias/js/bootstrapValidator.js" ></script>
+    <script charset="utf-8" src="dependecias/js/ayudas.js" ></script>
     <script charset="utf-8" src="dependecias/js/nieve-js.js" ></script>
     <script charset="utf-8" src="funciones/login?fecha" ></script>
   </body>

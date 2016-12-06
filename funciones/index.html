@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Enviar mails</title>
+  </head>
+  <body>
+    <button type="button" id="enviar"> Enviar mailing</button>
+    <div id="salida">
+
+    </div>
+    <script src="../dependecias/js/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      $('#enviar').click(function(){
+        $.ajax({
+          type: "POST",
+          url: "emails.php",
+          data: "enviar",
+          success: function (data){
+            $('#salida').html(data);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
