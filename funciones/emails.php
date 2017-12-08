@@ -59,13 +59,15 @@ function envia_todos(){
 			$idinvi=$mailing_row['ID_INVI'];
 			if(c_email($mailing_row['NOMBRES_INVI'],$mailing_row['EMAIL_INVI'])){
 				echo "<li>Se ha enviado el correo a ".$mailing_row['NOMBRES_INVI']."</li>";
-				$query.="($idcena,$idinvi,1),";
+				$query="INSERT IGNORE INTO enviado(ID_CENAS,ID_INVI,EN_ENVIADO) VALUES ";
+				$query.="($idcena,$idinvi,1);";
+				$base_var->query($query) or die(mysqli_error());
 			}else{
 				echo "<li>NO SE ha enviado el correo a ".$mailing_row['NOMBRES_INVI']."</li>";
 			}
 		}while ($mailing_row = mysqli_fetch_assoc($mailing));
-		$query=trim($query,',');
-		$base_var->query($query) or die(mysqli_error());
+		//$query=trim($query,',');
+
 	}
 }
 ?>
