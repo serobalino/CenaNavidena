@@ -13,7 +13,7 @@ if(isset($_POST['listar'])){
     $ufn = $_SESSION["USR_FNOM"];
 
 
-    $query_materiales = "SELECT ID_MENUS,DETALLE_MENUS,ingredientes.ID_INGRE,CANTIDAD_INGRE,UNIDAD_INGRE,DETALLE_INGRE,CANTI_TRAE,NOMBRES_INVI FROM menus NATURAL JOIN ingredientes LEFT JOIN trae ON trae.ID_INGRE=ingredientes.ID_INGRE LEFT JOIN invitados ON invitados.ID_INVI=trae.ID_INVI WHERE ID_CENAS=$cid";
+    $query_materiales = "SELECT ID_MENUS,DETALLE_MENUS,ingredientes.ID_INGRE,CANTIDAD_INGRE,UNIDAD_INGRE,DETALLE_INGRE,CANTI_TRAE,NOMBRES_INVI FROM menus NATURAL JOIN ingredientes LEFT JOIN trae ON trae.ID_INGRE=ingredientes.ID_INGRE LEFT JOIN invitados ON invitados.ID_INVI=trae.ID_INVI WHERE ID_CENAS=$cid ORDER BY ID_MENUS,ingredientes.ID_INGRE";
   	$materiales = $base_var->query($query_materiales) or die(mysqli_error());
     $materiales_row = mysqli_fetch_assoc($materiales);
     $html='<table class="table table-hover">

@@ -102,7 +102,7 @@ if(isset($_POST['insertar'])){
     $tit=$_POST['titulo'];
 
 
-    $stmt =$base_var->prepare("INSERT INTO eventos (ID_CENAS,ID_FAMILIA,DETALLE_EVENTO,TIPO_EVENTO)VALUES($cid,$fid,'$det','$tit')");
+    $stmt_query ="INSERT INTO eventos (ID_CENAS,ID_FAMILIA,DETALLE_EVENTO,TIPO_EVENTO) VALUES ($cid,$fid,'$det','$tit')";
     $base_var->query($stmt_query) or die(mysqli_error());
     echo '<div class="alert alert-info"><b><span class="fa fa-check"></span> Se guardo Correctamente.</b></div>';
   }

@@ -42,7 +42,7 @@ acceso();
                 <button type="button" id="guardar" class="btn btn-info"><span class="fa fa-floppy-o"></span> Guardar</button>
               </div>
             </form>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </div>
         </div>
       </div>
